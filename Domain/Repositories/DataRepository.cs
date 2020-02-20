@@ -77,11 +77,11 @@ namespace SCMS.API.Repositories
             return _context.SaveChanges();
         }
 
-        public bool Update(T entity)
+        public void Update(T entity)
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
-            return true;
+            
         }
     }
 }
