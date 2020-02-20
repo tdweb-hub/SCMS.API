@@ -58,27 +58,30 @@ namespace SCMS.API.Repositories
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbSet.ToList();
         }
 
         public T GetById(object id)
         {
-            throw new NotImplementedException();
+            return _dbSet.Find(id);
         }
 
         public IEnumerable<T> GetWithRawSql(string query, params object[] parameters)
         {
-            throw new NotImplementedException();
+            return _dbSet.SqlQuery(query, parameters);
         }
 
         public int Insert(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            return _context.SaveChanges();
         }
 
         public bool Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            return true;
         }
     }
 }
