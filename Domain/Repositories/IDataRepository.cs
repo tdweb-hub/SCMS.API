@@ -14,7 +14,7 @@ namespace SCMS.API.Domain.Repositories
         T GetById(object id);
         IEnumerable<T> GetWithRawSql(string query, params object[] parameters);
         int Insert(T entity);
-        bool Update(T entity);
+        void Update(T entity);
         IEnumerable<T> GetAll();
     }
 }
